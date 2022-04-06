@@ -20,7 +20,7 @@ exports.add = async (req, res) => {
     const emailPattern = new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'g');
     const emailMatched = email.match(emailPattern).join('');
     /*console.log('test', title, author, email, file, fileExt, titleMatched, authorMatched, emailMatched);*/
-    if(title && author && email && file && (fileExt === 'jpg' || 'gif' || 'png') && titleMatched.length === title.length && authorMatched.length === author.length && emailMatched.length === email.length) { // if fields are not empty...
+    if(title && author && email && file && (fileExt === 'jpg' || fileExt === 'gif' || fileExt === 'png') && titleMatched.length === title.length && authorMatched.length === author.length && emailMatched.length === email.length) { // if fields are not empty...
 
       const fileName = file.path.split('/').slice(-1)[0]; // cut only filename from full path, e.g. C:/test/abc.jpg -> abc.jpg
       const newPhoto = new Photo({ title, author, email, src: fileName, votes: 0 });
